@@ -7,13 +7,25 @@ This has two current approaches in mind:
 
 We'll try the first, and if that's not good enough, we'll try te second.
 
-To run locally, using Node 13+
+To run locally, using Node 13+, first clone:
 
 ```sh
 git clone https://github.com/microsoft/TypeScript-Release-Deploy-Perf-Info
 cd TypeScript-Release-Deploy-Perf-Info
 yarn install
-node run.mjs
+```
+
+The use any of:
+
+```sh
+# Compare between two known refs
+node src/diff.mjs run f646ec87fc master
+
+# Compare current head to the latest release
+node src/diff.mjs head
+
+# Compare between the last two stable releases
+node src/diff.mjs latest
 ```
 
 The scripting is all done in NodeJS via [ShellJs](https://www.npmjs.com/package/shelljs) which allows for it to run in Windows and UNIX.

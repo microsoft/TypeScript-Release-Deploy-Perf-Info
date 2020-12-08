@@ -14,7 +14,7 @@ yargs(hideBin(process.argv))
   })
 
   .command('latest', 'Generate a CSV of the difference between the latest two releases', () => {}, (argv) => {
-    const tags = getGitTags() 
+    const tags = getGitTags().filter(r => !r.includes("-")) 
     const latest = tags.pop()
     const secondLatest = tags.pop()
     run(secondLatest, latest)
