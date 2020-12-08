@@ -1,0 +1,13 @@
+{
+  "name": "TypeScriptReleaseDeployPerfInfo",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/microsoft/TypeScript-Release-Deploy-Perf-Info",
+  "author": "Microsoft",
+  "license": "MIT",
+  "dependencies": {
+    "shelljs": "^0.8.4",
+    "yargs": "^16.2.0"
+  }
+}

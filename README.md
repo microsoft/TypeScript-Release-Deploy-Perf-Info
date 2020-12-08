@@ -1,14 +1,22 @@
-# Project
+# Generate stats on perf in a per-commit basis automatically
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This has two current approaches in mind:
 
-As the maintainer of this project, please make a few updates:
+- 1. Use a single GitHub Action workflow to measure perf. We're looking for relative perf, so maybe that one computer is enough.
+- 2. Use a GitHub Action to start up a beefy azure VM instance which runs this instead.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+We'll try the first, and if that's not good enough, we'll try te second.
+
+To run locally, using Node 13+
+
+```sh
+git clone https://github.com/microsoft/TypeScript-Release-Deploy-Perf-Info
+cd TypeScript-Release-Deploy-Perf-Info
+yarn install
+node run.mjs
+```
+
+The scripting is all done in NodeJS via [ShellJs](https://www.npmjs.com/package/shelljs) which allows for it to run in Windows and UNIX.
 
 ## Contributing
 

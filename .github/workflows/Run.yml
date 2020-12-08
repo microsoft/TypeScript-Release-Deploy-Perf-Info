@@ -1,0 +1,25 @@
+name: Generate Perf Info
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - run: yarn install
+
+      # Do the work
+      - run: node index.js
+
+      - name: Send a message to Microsoft Teams
+        if: ${{ failure() }}
+        uses: aliencube/microsoft-teams-actions@v0.8.0
+        with:
+          webhook_uri: ${{ secrets.TEAMS_WEB_BOT_INCOMING_URL }}
+          title: Generating Perf info failed
+          summary: Something failed in the GitHub Action workflow
+          actions: '[{ "@type": "OpenUri", "name": "View Logs", "targets": [{ "os": "default", "uri": "https://github.com/microsoft/TypeScript-Website/actions/runs/${{ github.run_id }}?check_suite_focus=true" }] }]'
